@@ -6,7 +6,7 @@
 #    By: hanjebou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/17 17:45:52 by hanjebou          #+#    #+#              #
-#    Updated: 2023/10/02 19:51:21 by hanjebou         ###   ########.fr        #
+#    Updated: 2023/10/04 14:27:28 by hanjebou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,8 @@ $(NAME):	$(OBJ)
 			@echo "$(GREEN)╰───────────────────────────────────╯$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(GREEN) ✔ $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+			@echo "$(GREEN) ✔ $< $(DEF_COLOR)"
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
@@ -69,10 +69,8 @@ clean:
 			@make clean -C $(LIBFT)
 
 fclean:		
-			@$(RM) $(OBJ_DIR)
-			@$(RM) $(NAME)
+			@$(RM) $(OBJ_DIR) $(LIBFT)/libft.a $(NAME)
 			@make clean -C $(LIBFT)
-			@$(RM) $(LIBFT)/libft.a
 			@echo "$(YELLOW)╭───────────────────────────────────────────╮$(DEF_COLOR)"
 			@echo "$(YELLOW)│  Cleaned object files and libftprintf.a.  │$(DEF_COLOR)"
 			@echo "$(YELLOW)╰───────────────────────────────────────────╯$(DEF_COLOR)"
