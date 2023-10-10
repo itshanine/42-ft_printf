@@ -6,7 +6,7 @@
 /*   By: hanjebou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:44:40 by hanjebou          #+#    #+#             */
-/*   Updated: 2023/10/09 15:57:00 by hanjebou         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:58:59 by hanjebou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 int	ft_putchar(int c)
 {
 	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putpercent(void)
-{
-	write (1, '%', 1);
 	return (1);
 }
 

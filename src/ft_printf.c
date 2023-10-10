@@ -6,37 +6,34 @@
 /*   By: hanjebou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 20:00:58 by hanjebou          #+#    #+#             */
-/*   Updated: 2023/10/09 16:03:21 by hanjebou         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:59:12 by hanjebou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_format(va_list args, const char format)
+int	ft_format(va_list *args, const char format)
 {
-	int	length;
-
-	length = 0;
 	if (format == 'c')
-		length += ft_putchar(va_arg(args, int));
+		return (ft_putchar(va_arg(*args, int)));
 	if (format == 's')
-		length += ft_putstr(va_arg(args, char *));
+		return (ft_putstr(va_arg(*args, char *)));
 	if (format == 'p')
-		length += ft_putadress(va_arg(args, void *));
+		return (ft_putadress(va_arg(*args, void *)));
 	if (format == 'd' || format == 'i')
-		length += ft_putnbr(va_arg(args, int));
+		return (ft_putnbr(va_arg(*args, int)));
 	if (format == 'u')
-		length += ft_putunbr(va_arg(args, unsigned int));
+		return (ft_putunbr(va_arg(*args, unsigned int)));
 	if (format == 'x')
-		length += ft_puthexa(va_arg(args, unsigned int), "0123456789abcdef");
+		return (ft_puthexa(va_arg(*args, unsigned int), "0123456789abcdef"));
 	if (format == 'X')
-		length += ft_puthexa(va_arg(args, unsigned int), "0123456789ABCDEF");
+		return (ft_puthexa(va_arg(*args, unsigned int), "0123456789ABCDEF"));
 	if (format == '%')
-		length += ft_putpercent();
-	return (length);
+		return (ft_putchar('%'));
+	return (-1);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(const char *format, ...)
 {
 	size_t	i;
 	int		print_length;
@@ -44,16 +41,19 @@ int	ft_printf(const char *str, ...)
 
 	i = 0;
 	print_length = 0;
-	va_start(args, str);
-	while (str[i])
+	va_start(args, format);
+	while (format[i])
 	{
-		if (str[i] == '%')
+		if (format[i] == '%')
 		{
-			print_length += ft_format(args, str[i + 1]);
 			i++;
+			if (format[i] != '\0')
+			{
+				print_length += ft_format(&args, format[i]);
+			}
 		}
 		else
-			print_length += ft_putchar(str[i]);
+			print_length += ft_putchar(format[i]);
 		i++;
 	}
 	va_end(args);

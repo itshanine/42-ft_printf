@@ -6,7 +6,7 @@
 /*   By: hanjebou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:23:15 by hanjebou          #+#    #+#             */
-/*   Updated: 2023/10/09 15:54:16 by hanjebou         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:11:04 by hanjebou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_putnbr(int nb)
 	return (print_length);
 }
 
-int	ft_putunbr(int nb)
+int	ft_putunbr(unsigned int nb)
 {
 	int		print_length;
 	size_t	j;
@@ -69,7 +69,7 @@ int	ft_putadress(void *ptr)
 	char			rev[16];
 
 	if (!ptr)
-		return (ft_putstr("(nil)"), 5);
+		return (ft_putstr("0x0"), 3);
 	print_length = 0;
 	j = 0;
 	adress = (unsigned long)ptr;
@@ -82,6 +82,7 @@ int	ft_putadress(void *ptr)
 	print_length += ft_putstr("0x");
 	while (j > 0)
 		print_length += ft_putchar(rev[--j]);
+	return (print_length);
 }
 
 int	ft_puthexa(unsigned int nb, char *base)
@@ -90,6 +91,8 @@ int	ft_puthexa(unsigned int nb, char *base)
 	size_t	j;
 	char	rev[8];
 
+	print_length = 0;
+	j = 0;
 	while (nb != 0 || j == 0)
 	{
 		rev[j++] = base[nb % 16];
