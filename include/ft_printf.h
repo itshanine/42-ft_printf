@@ -6,14 +6,12 @@
 /*   By: hanjebou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:47:56 by hanjebou          #+#    #+#             */
-/*   Updated: 2023/10/10 19:59:27 by hanjebou         ###   ########.fr       */
+/*   Updated: 2023/10/12 00:12:34 by hanjebou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# define FORMAT "int" 
 
 # include <unistd.h>
 # include <stdio.h>
